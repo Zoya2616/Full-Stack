@@ -27,7 +27,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use('/posts/store',validateController)
 app.use(expressSession( {
-    secret: 'keyboard'
+    secret: 'keyboard',
+    resave: true,
+    saveUninitialized: true
 }))
 app.use('*', (req,res,next) => {
     loggedIn= req.session.userId;
